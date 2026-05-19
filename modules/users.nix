@@ -58,7 +58,6 @@
     libreoffice
     zotero
     drawio
-    staruml
     teams-for-linux
 
     # Développement (Langages et Outils)
