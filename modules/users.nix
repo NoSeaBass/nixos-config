@@ -58,7 +58,7 @@
     libreoffice
     zotero
     drawio
-    teams-for-linux
+    #teams-for-linux
 
     # Développement (Langages et Outils)
     neovim
