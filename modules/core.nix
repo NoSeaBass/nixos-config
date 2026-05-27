@@ -1,6 +1,22 @@
 { config, pkgs, ... }:
 
 {
+  # KDE Plasma
+  services.xserver.enable = true;
+
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+
+  services.desktopManager.plasma6.enable = true;
+
+  # Clavier
+  services.xserver.xkb = {
+    layout = "us"; # Remplacez par "fr" si besoin
+    variant = "intl";
+  };
+
+  console.keyMap = "us";
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

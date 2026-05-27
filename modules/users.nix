@@ -70,6 +70,7 @@
     ruby
     jekyll
     jdk21
+    dbeaver-bin
     sqlite
     postgresql
     docker
@@ -92,6 +93,8 @@
     spice-protocol
     virtio-win
     win-spice
+
+    lunar-client
   ];
 
   # Configuration de la Virtualisation
