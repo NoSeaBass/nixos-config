@@ -9,7 +9,7 @@
   users.users.ibra = {
     isNormalUser = true;
     description = "Papa Ibrahima Diop";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "docker"];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -24,6 +24,10 @@
       '';
       #cat ~/.dragon
     };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "docker-28.5.2"
+  ];
 
   # Programmes de base du système
   programs.firefox.enable = true;
@@ -50,6 +54,7 @@
     figlet
     lolcat
     sl
+    dolphin-emu
     ppsspp
     vlc
 
@@ -78,11 +83,13 @@
 
     # IDEs et Utilitaires Dev
     vscode-fhs
+    zed-editor
     android-studio
     eclipses.eclipse-java
     sqlitebrowser
     postman
     xmlstarlet
+    github-desktop
 
     # Virtualisation (QEMU / Spices)
     virt-manager
@@ -94,7 +101,10 @@
     virtio-win
     win-spice
 
-    lunar-client
+    #lunar-client
+    prismlauncher
+
+    exfatprogs
   ];
 
   # Configuration de la Virtualisation
@@ -125,4 +135,31 @@
       host all all ::1/128 trust
       '';
   };
+
+  programs.nix-ld = {
+  enable = true;
+  libraries = with pkgs; [
+    # Bibliothèques nécessaires pour l'émulateur
+    xorg.libXcomposite
+    xorg.libXtst
+    xorg.libXdamage
+    xorg.libXfixes
+    xorg.libXext
+    xorg.libX11
+    xorg.libxkbfile
+    xorg.libxcb
+    libxshmfence
+    libGL
+    mesa
+    glib
+    gtk3
+    zlib
+    nss
+    nspr
+    alsa-lib
+  ];
+};
+
+virtualisation.docker.enable = true;
+
 }

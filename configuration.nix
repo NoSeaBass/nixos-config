@@ -14,6 +14,17 @@
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+      # Limit system generations to free up /nix
+  nix.gc.automatic = true;
+  nix.gc.dates = "weekly";
+  nix.gc.options = "--delete-older-than 30d";
+
+  # Limit GRUB/systemd-boot kernels to prevent /boot from filling up
+  boot.loader.systemd-boot.configurationLimit = 10;
+  # OR if using grub:
+  # boot.loader.grub.configurationLimit = 10;
+
+
     system.stateVersion = "25.11"; # Did you read the comment?
 
 }
